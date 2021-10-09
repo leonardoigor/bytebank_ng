@@ -1,14 +1,20 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule } from '@angular/core';
 
-import { AppComponent } from './app.component';
-import { NovaTransferenciaComponent } from './nova-transferencia/nova-transferencia';
+import { NovaTransferenciaComponent } from './components/nova-transferencia/nova-transferencia';
 import { FormsModule } from '@angular/forms';
+import { ExtratoComponent } from './components/extrato/extrato.component';
+import { AppComponent } from './components/main/app.component';
+import { registerLocaleData } from '@angular/common';
+import LocalePt from '@angular/common/locales/pt';
+registerLocaleData(LocalePt, 'pt-br')
 
 @NgModule({
-  declarations: [AppComponent, NovaTransferenciaComponent],
+  declarations: [AppComponent, NovaTransferenciaComponent, ExtratoComponent],
   imports: [BrowserModule, FormsModule],
-  providers: [],
+  providers: [
+    { provide: LOCALE_ID, useValue: 'pt-br' }
+  ],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }
