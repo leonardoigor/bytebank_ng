@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { TransferenciaService } from 'src/app/services/transferencia/transferencia.service';
 import { Transferencia } from '../../entities/transferencia';
 
 @Component({
@@ -11,8 +12,10 @@ export class AppComponent {
   transferencias: Transferencia[] = []
 
 
+  constructor(private service: TransferenciaService) { }
+
   transferencia(transferencia: Transferencia) {
-    this.transferencias.push(transferencia.newInstance());
+    this.service.adicitonar(transferencia.newInstance())
 
   }
 }
